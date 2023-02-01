@@ -10,6 +10,10 @@ export class CommandHistory<T> {
    */
   private pointer: number;
 
+  get length() {
+    return this.content.length;
+  }
+
   constructor() {
     this.content = Array<T>();
     this.pointer = -1;

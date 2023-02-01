@@ -251,3 +251,31 @@ describe("pop method", () => {
     expect(history.getPointer()).toBe(0);
   });
 });
+
+describe("length getter", () => {
+  it("should return 0 when the history is empty", () => {
+    const history = new CommandHistory();
+    expect(history.length).toBe(0);
+  });
+
+  it("should return 1 when the history has 1 element", () => {
+    const history = new CommandHistory();
+    history.push("test");
+    expect(history.length).toBe(1);
+  });
+
+  it("should return 2 when the history has 2 elements", () => {
+    const history = new CommandHistory();
+    history.push("test");
+    history.push("test2");
+    expect(history.length).toBe(2);
+  });
+
+  it("should return 1 when the history has 2 elements and the last one is removed", () => {
+    const history = new CommandHistory();
+    history.push("test");
+    history.push("test2");
+    history.pop();
+    expect(history.length).toBe(1);
+  });
+});
