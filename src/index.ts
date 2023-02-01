@@ -38,7 +38,7 @@ export class CommandHistory<T> {
   }
 
   /**
-   * Removes the last item from the history and returns it. Sets the pointer to the new last item
+   * Removes the most recent item from the history and returns it. Sets the pointer to the new more recent item
    */
   pop() {
     const deletedItem = this.content.pop();
@@ -96,6 +96,13 @@ export class CommandHistory<T> {
    */
   getPointer() {
     return this.pointer;
+  }
+
+  /**
+   * Returns the most recent added item
+   */
+  getMostRecent() {
+    return this.content[this.content.length - 1];
   }
 
   /**

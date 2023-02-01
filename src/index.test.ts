@@ -252,6 +252,26 @@ describe("pop method", () => {
   });
 });
 
+describe("getMostRecent method", () => {
+  it("should return undefined when the history is empty", () => {
+    const history = new CommandHistory();
+    expect(history.getMostRecent()).toBe(undefined);
+  });
+
+  it("should return the last item when the history has only one item", () => {
+    const history = new CommandHistory();
+    history.push("test");
+    expect(history.getMostRecent()).toBe("test");
+  });
+
+  it("should return the last item when the history has more than one item", () => {
+    const history = new CommandHistory();
+    history.push("test");
+    history.push("test2");
+    expect(history.getMostRecent()).toBe("test2");
+  });
+});
+
 describe("length getter", () => {
   it("should return 0 when the history is empty", () => {
     const history = new CommandHistory();
