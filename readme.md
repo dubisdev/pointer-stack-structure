@@ -1,4 +1,4 @@
-# @dubisdev/cli-history-structure
+# @dubisdev/pointer-stack-structure
 
 This package implements a data structure for the CLI. It can be used in the CLI to store the history of introduced commands.
 

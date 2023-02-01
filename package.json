@@ -1,5 +1,5 @@
 {
-  "name": "@dubisdev/cli-history-structure",
+  "name": "@dubisdev/pointer-stack-structure",
   "description": "A JavaScript implementation of a CLI input data structure",
   "type": "module",
   "version": "1.0.0",
@@ -10,6 +10,8 @@
     "dist"
   ],
   "keywords": [
+    "stack",
+    "pointer",
     "cli",
     "history",
     "data structure"

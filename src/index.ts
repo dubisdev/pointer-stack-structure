@@ -1,12 +1,12 @@
-export class CommandHistory<T> {
+export class PointerStack<T> {
   private content: T[];
   /**
-   * The pointer is the index of the current item in the history.
-   * It is used to get the next and previous item in the history.
+   * The pointer is the index of the current item in the stack.
+   * It is used to get the next and previous item in the stack.
    *
    * The pointer values can be:
-   * - `-1`: the history is empty
-   * - `0 - (history.length - 1)`: the pointer in the history
+   * - `-1`: the stack is empty
+   * - `0 - (stack.size - 1)`: the pointer in the stack
    */
   private pointer: number;
 
@@ -16,21 +16,21 @@ export class CommandHistory<T> {
   }
 
   /**
-   * Return the number of items in the history
+   * Return the number of items in the stack
    */
-  get length() {
+  get size() {
     return this.content.length;
   }
 
   /**
-   * Returns a boolean indicating if the history is empty
+   * Returns a boolean indicating if the stack is empty
    */
   isEmpty() {
     return this.content.length === 0;
   }
 
   /**
-   * Adds an item to the history and updates the pointer to its index
+   * Adds an item to the stack and updates the pointer to its index
    */
   push(item: T) {
     this.content.push(item);
@@ -38,7 +38,7 @@ export class CommandHistory<T> {
   }
 
   /**
-   * Removes the most recent item from the history and returns it. Sets the pointer to the new more recent item
+   * Removes the most recent item from the stack and returns it. Sets the pointer to the new more recent item
    */
   pop() {
     const deletedItem = this.content.pop();
@@ -47,7 +47,7 @@ export class CommandHistory<T> {
   }
 
   /**
-   * Returns the next item in the history and updates the pointer to its index
+   * Returns the next item in the stack and updates the pointer to its index
    */
   getNext() {
     const newPointerIsInRange = this.pointer + 1 < this.content.length;
@@ -58,11 +58,11 @@ export class CommandHistory<T> {
   }
 
   /**
-   * Returns the previous item in the history and updates the pointer to its index
+   * Returns the previous item in the stack and updates the pointer to its index
    */
   getPrev() {
-    const isHistoryEmpty = this.isEmpty();
-    if (isHistoryEmpty) return undefined;
+    const isStackEmpty = this.isEmpty();
+    if (isStackEmpty) return undefined;
 
     const newPointer = this.pointer - 1;
 
@@ -101,12 +101,12 @@ export class CommandHistory<T> {
   /**
    * Returns the most recent added item
    */
-  getMostRecent() {
+  peek() {
     return this.content[this.content.length - 1];
   }
 
   /**
-   * Clears the history
+   * Clears the stack
    */
   clear() {
     this.content = Array<T>();
