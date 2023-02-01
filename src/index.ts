@@ -10,13 +10,16 @@ export class CommandHistory<T> {
    */
   private pointer: number;
 
-  get length() {
-    return this.content.length;
-  }
-
   constructor() {
     this.content = Array<T>();
     this.pointer = -1;
+  }
+
+  /**
+   * Return the number of items in the history
+   */
+  get length() {
+    return this.content.length;
   }
 
   /**
@@ -78,6 +81,9 @@ export class CommandHistory<T> {
     return this.content[this.pointer];
   }
 
+  /**
+   * Sets the pointer to the specified index
+   */
   setPointer(index: number) {
     if (index < 0 || index >= this.content.length) {
       throw new Error("The specified index is out of range");
@@ -85,10 +91,16 @@ export class CommandHistory<T> {
     this.pointer = index;
   }
 
+  /**
+   * Returns the pointer position
+   */
   getPointer() {
     return this.pointer;
   }
 
+  /**
+   * Clears the history
+   */
   clear() {
     this.content = Array<T>();
     this.pointer = -1;
