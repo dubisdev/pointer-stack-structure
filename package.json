@@ -3,7 +3,8 @@
   "description": "A JavaScript implementation of a CLI input data structure",
   "type": "module",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "files": [
     "dist"
