@@ -3,7 +3,10 @@ export class CommandHistory<T> {
   /**
    * The pointer is the index of the current item in the history.
    * It is used to get the next and previous item in the history.
-   * The pointer values can be only indexes of the content array (>= -1 && < content.length)
+   *
+   * The pointer values can be:
+   * - `-1`: the history is empty
+   * - `0 - (history.length - 1)`: the pointer in the history
    */
   private pointer: number;
 
@@ -12,12 +15,15 @@ export class CommandHistory<T> {
     this.pointer = -1;
   }
 
+  /**
+   * Returns a boolean indicating if the history is empty
+   */
   isEmpty() {
     return this.content.length === 0;
   }
 
   /**
-   * Adds an item to the history and sets the pointer to it
+   * Adds an item to the history and updates the pointer to its index
    */
   push(item: T) {
     this.content.push(item);
@@ -33,6 +39,9 @@ export class CommandHistory<T> {
     return deletedItem;
   }
 
+  /**
+   * Returns the next item in the history and updates the pointer to its index
+   */
   getNext() {
     const newPointerIsInRange = this.pointer + 1 < this.content.length;
 
@@ -41,6 +50,9 @@ export class CommandHistory<T> {
     }
   }
 
+  /**
+   * Returns the previous item in the history and updates the pointer to its index
+   */
   getPrev() {
     const isHistoryEmpty = this.isEmpty();
     if (isHistoryEmpty) return undefined;
@@ -55,12 +67,15 @@ export class CommandHistory<T> {
     }
   }
 
+  /**
+   * Returns the item at the pointer position
+   */
   getCurrent() {
     return this.content[this.pointer];
   }
 
   setPointer(index: number) {
-    if (index < -1 || index >= this.content.length) {
+    if (index < 0 || index >= this.content.length) {
       throw new Error("The specified index is out of range");
     }
     this.pointer = index;

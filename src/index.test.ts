@@ -158,14 +158,7 @@ describe("getNext method", () => {
     expect(history.getNext()).toBe(undefined);
   });
 
-  it("should return the first item when the pointer is at the beginning", () => {
-    const history = new CommandHistory();
-    history.push("test");
-    history.setPointer(-1);
-    expect(history.getNext()).toBe("test");
-  });
-
-  it("should return the item at the pointer position", () => {
+  it("should return the item at the next pointer position", () => {
     const history = new CommandHistory();
     history.push("test");
     history.push("test2");
