@@ -1,5 +1,5 @@
 {
-  "name": "@dubisdev/cli-data-structure",
+  "name": "@dubisdev/cli-history-structure",
   "description": "A JavaScript implementation of a CLI input data structure",
   "type": "module",
   "version": "1.0.0",
@@ -8,6 +8,11 @@
   "license": "MIT",
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "cli",
+    "history",
+    "data structure"
   ],
   "scripts": {
     "build": "yarn prod:test && tsc",
