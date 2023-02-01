@@ -10,7 +10,15 @@ export class PointerStack<T> {
    */
   private pointer: number;
 
-  constructor() {
+  constructor(initialContent?: T[]) {
+    const hasInitialContent = initialContent && initialContent.length > 0;
+
+    if (hasInitialContent && Array.isArray(initialContent)) {
+      this.content = initialContent;
+      this.pointer = initialContent.length - 1;
+      return;
+    }
+
     this.content = Array<T>();
     this.pointer = -1;
   }

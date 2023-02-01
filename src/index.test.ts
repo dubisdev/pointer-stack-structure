@@ -299,3 +299,39 @@ describe("size getter", () => {
     expect(history.size).toBe(1);
   });
 });
+
+describe("constructor method", () => {
+  it("should create an empty history", () => {
+    const history = new PointerStack();
+    expect(history.isEmpty()).toBe(true);
+  });
+
+  it("should create a history with the given items", () => {
+    const history = new PointerStack(["test", 1]);
+    expect(history.isEmpty()).toBe(false);
+    expect(history.getPointer()).toBe(1);
+    expect(history.size).toBe(2);
+  });
+
+  it("should create an empty history when the given items are not an array", () => {
+    // @ts-ignore - testing invalid input
+    const history = new PointerStack("test");
+    // @ts-expect-error - testing invalid input
+    const history2 = new PointerStack(1);
+    // @ts-expect-error - testing invalid input
+    const history3 = new PointerStack({ test: 1 });
+    // @ts-expect-error - testing invalid input
+    const history4 = new PointerStack(null);
+
+    const history5 = new PointerStack(undefined);
+    // @ts-expect-error - testing invalid input
+    const history6 = new PointerStack(true);
+
+    expect(history.isEmpty()).toBe(true);
+    expect(history2.isEmpty()).toBe(true);
+    expect(history3.isEmpty()).toBe(true);
+    expect(history4.isEmpty()).toBe(true);
+    expect(history5.isEmpty()).toBe(true);
+    expect(history6.isEmpty()).toBe(true);
+  });
+});
