@@ -8,7 +8,7 @@ export class CommandHistory<T> {
   private pointer: number;
 
   constructor() {
-    this.content = new Array<T>();
+    this.content = Array<T>();
     this.pointer = -1;
   }
 
@@ -68,5 +68,10 @@ export class CommandHistory<T> {
 
   getPointer() {
     return this.pointer;
+  }
+
+  clear() {
+    this.content = Array<T>();
+    this.pointer = -1;
   }
 }

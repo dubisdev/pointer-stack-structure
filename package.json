@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "yarn prod:test && tsc",
-    "dev:test": "vitest --coverage",
+    "dev": "vitest --coverage",
     "prod:test": "vitest --watch=false --coverage"
   },
   "devDependencies": {

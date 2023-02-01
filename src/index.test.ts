@@ -52,6 +52,24 @@ describe("push method", () => {
   });
 });
 
+describe("clear method", () => {
+  it("should clear the history", () => {
+    const history = new CommandHistory();
+    history.push("test");
+    history.push("test2");
+    history.clear();
+    expect(history.isEmpty()).toBe(true);
+  });
+
+  it("should set the pointer to -1", () => {
+    const history = new CommandHistory();
+    history.push("test");
+    history.push("test2");
+    history.clear();
+    expect(history.getPointer()).toBe(-1);
+  });
+});
+
 describe("getPointer method", () => {
   it("should return -1 when the history is empty", () => {
     const history = new CommandHistory();
